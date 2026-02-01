@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# プロジェクト固有
+videos/
+outputs/
+models/
+checkpoints/
+*.pth
+*.onnx
+*.engine
+*.trt
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# pyenv
+.python-version
