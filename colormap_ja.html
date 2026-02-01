@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cityscapes クラスカラー</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .color-box {
+            width: 50px;
+            height: 20px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cityscapes クラスカラー</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>クラス</th>
+                <th>RGB</th>
+                <th>Hex</th>
+                <th>プレビュー</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>道路</td>
+                <td>[128, 64, 128]</td>
+                <td><code>#804080</code></td>
+                <td><div class="color-box" style="background-color: #804080;"></div></td>
+            </tr>
+            <tr>
+                <td>歩道</td>
+                <td>[244, 35, 232]</td>
+                <td><code>#f423e8</code></td>
+                <td><div class="color-box" style="background-color: #f423e8;"></div></td>
+            </tr>
+            <tr>
+                <td>建物</td>
+                <td>[70, 70, 70]</td>
+                <td><code>#464646</code></td>
+                <td><div class="color-box" style="background-color: #464646;"></div></td>
+            </tr>
+            <tr>
+                <td>壁</td>
+                <td>[102, 102, 156]</td>
+                <td><code>#66669c</code></td>
+                <td><div class="color-box" style="background-color: #66669c;"></div></td>
+            </tr>
+            <tr>
+                <td>フェンス</td>
+                <td>[190, 153, 153]</td>
+                <td><code>#be9999</code></td>
+                <td><div class="color-box" style="background-color: #be9999;"></div></td>
+            </tr>
+            <tr>
+                <td>ポール</td>
+                <td>[153, 153, 153]</td>
+                <td><code>#999999</code></td>
+                <td><div class="color-box" style="background-color: #999999;"></div></td>
+            </tr>
+            <tr>
+                <td>信号機</td>
+                <td>[250, 170, 30]</td>
+                <td><code>#faaa1e</code></td>
+                <td><div class="color-box" style="background-color: #faaa1e;"></div></td>
+            </tr>
+            <tr>
+                <td>交通標識</td>
+                <td>[220, 220, 0]</td>
+                <td><code>#dcdc00</code></td>
+                <td><div class="color-box" style="background-color: #dcdc00;"></div></td>
+            </tr>
+            <tr>
+                <td>植生</td>
+                <td>[107, 142, 35]</td>
+                <td><code>#6b8e23</code></td>
+                <td><div class="color-box" style="background-color: #6b8e23;"></div></td>
+            </tr>
+            <tr>
+                <td>地形</td>
+                <td>[152, 251, 152]</td>
+                <td><code>#98fb98</code></td>
+                <td><div class="color-box" style="background-color: #98fb98;"></div></td>
+            </tr>
+            <tr>
+                <td>空</td>
+                <td>[70, 130, 180]</td>
+                <td><code>#4682b4</code></td>
+                <td><div class="color-box" style="background-color: #4682b4;"></div></td>
+            </tr>
+            <tr>
+                <td>人</td>
+                <td>[220, 20, 60]</td>
+                <td><code>#dc143c</code></td>
+                <td><div class="color-box" style="background-color: #dc143c;"></div></td>
+            </tr>
+            <tr>
+                <td>ライダー</td>
+                <td>[255, 0, 0]</td>
+                <td><code>#ff0000</code></td>
+                <td><div class="color-box" style="background-color: #ff0000;"></div></td>
+            </tr>
+            <tr>
+                <td>車</td>
+                <td>[0, 0, 142]</td>
+                <td><code>#00008e</code></td>
+                <td><div class="color-box" style="background-color: #00008e;"></div></td>
+            </tr>
+            <tr>
+                <td>トラック</td>
+                <td>[0, 0, 70]</td>
+                <td><code>#000046</code></td>
+                <td><div class="color-box" style="background-color: #000046;"></div></td>
+            </tr>
+            <tr>
+                <td>バス</td>
+                <td>[0, 60, 100]</td>
+                <td><code>#003c64</code></td>
+                <td><div class="color-box" style="background-color: #003c64;"></div></td>
+            </tr>
+            <tr>
+                <td>電車</td>
+                <td>[0, 80, 100]</td>
+                <td><code>#005064</code></td>
+                <td><div class="color-box" style="background-color: #005064;"></div></td>
+            </tr>
+            <tr>
+                <td>バイク</td>
+                <td>[0, 0, 230]</td>
+                <td><code>#0000e6</code></td>
+                <td><div class="color-box" style="background-color: #0000e6;"></div></td>
+            </tr>
+            <tr>
+                <td>自転車</td>
+                <td>[119, 11, 32]</td>
+                <td><code>#770b20</code></td>
+                <td><div class="color-box" style="background-color: #770b20;"></div></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
