@@ -1,0 +1,20 @@
+{
+  "method1_huggingface_segformer_b0": {
+    "fps": 17.69071207293237,
+    "model": "SegFormer-B0",
+    "framework": "Hugging Face Transformers",
+    "success": true
+  },
+  "method2_segformer_b1": {
+    "fps": 3.3606474920217124,
+    "model": "SegFormer-B1",
+    "framework": "Hugging Face Transformers",
+    "success": true
+  },
+  "method3_torchvision_deeplabv3": {
+    "fps": 1.8969874561232878,
+    "model": "DeepLabV3 + MobileNetV3",
+    "framework": "TorchVision",
+    "success": true
+  }
+}

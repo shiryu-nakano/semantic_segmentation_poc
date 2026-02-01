@@ -3,9 +3,10 @@ import numpy as np
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-def create_color_map(num_classes=19):
-    """Cityscapesカラーマップ生成"""
+def create_color_map(num_classes=21):
+    """セマンティックセグメンテーション用カラーマップ生成"""
     colors = [
+        [0, 0, 0],        # background
         [128, 64, 128],   # road
         [244, 35, 232],   # sidewalk
         [70, 70, 70],     # building
@@ -25,12 +26,26 @@ def create_color_map(num_classes=19):
         [0, 80, 100],     # train
         [0, 0, 230],      # motorcycle
         [119, 11, 32],    # bicycle
+        [128, 128, 128],  # void/other
     ]
+    
+    # 追加のクラスが必要な場合はランダムカラー生成
+    while len(colors) < num_classes:
+        colors.append(list(np.random.randint(0, 255, 3)))
+    
     return np.array(colors[:num_classes], dtype=np.uint8)
 
 def visualize_segmentation(image, seg_mask, alpha=0.5):
     """セグメンテーション結果を可視化"""
-    color_map = create_color_map()
+    # seg_maskの最大値に基づいてクラス数を決定
+    max_class = int(seg_mask.max())
+    num_classes = max(max_class + 1, 21)
+    
+    color_map = create_color_map(num_classes)
+    
+    # 範囲外の値をクリップ（安全策）
+    seg_mask = np.clip(seg_mask, 0, num_classes - 1).astype(np.uint8)
+    
     colored_mask = color_map[seg_mask]
     overlay = cv2.addWeighted(image, 1-alpha, colored_mask, alpha, 0)
     return overlay
