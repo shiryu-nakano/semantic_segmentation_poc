@@ -4,6 +4,7 @@ import torch
 import numpy as np
 from pathlib import Path
 from utils import process_video
+import argparse
 
 class HuggingFaceSegmentation:
     def __init__(self, model_name="nvidia/segformer-b0-finetuned-cityscapes-1024-1024"):
@@ -42,21 +43,30 @@ class HuggingFaceSegmentation:
         return seg_mask
 
 def main():
+    # コマンドライン引数のパース
+    parser = argparse.ArgumentParser(description='Semantic Segmentation using Hugging Face SegFormer')
+    parser.add_argument('video', type=str, help='Video path relative to videos/ directory (e.g., sample.mp4 or tsukuba2025/tsukuba2025-360/tsukuba2025-360-1.mp4)')
+    args = parser.parse_args()
+
     # モデル初期化
     seg_model = HuggingFaceSegmentation()
-    
-    # 動画処理
-    video_path = Path("videos/5750805-hd_1920_1080_24fps.mp4")
-    output_path = Path("outputs/method1_output.mp4")
-    output_path.parent.mkdir(exist_ok=True)
-    
+
+    # 動画パスの構築
+    video_path = Path("videos") / args.video
+
+    # 出力パスの構築（videos/ -> out/）
+    output_path = Path("out") / args.video
+
+    # 出力ディレクトリの作成（親ディレクトリも含めて）
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
     avg_fps = process_video(
-        video_path, 
-        seg_model.inference, 
+        video_path,
+        seg_model.inference,
         output_path,
         display=True
     )
-    
+
     print(f"\n=== Method 1 (Hugging Face SegFormer) ===")
     print(f"Average FPS: {avg_fps:.2f}")
 

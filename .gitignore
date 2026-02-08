@@ -30,3 +30,6 @@ Thumbs.db
 
 # pyenv
 .python-version
+
+
+*.mp4
