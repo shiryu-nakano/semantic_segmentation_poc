@@ -1,13 +1,15 @@
 # Semantic Segmentation Methods Comparison
 
-**Video:** `videos/5750805-hd_1920_1080_24fps.mp4`
+**入力動画:**
+- https://drive.google.com/file/d/1Qfk6CSvBEE-0W7mw-MrW0oDiP_77vRpC/view?usp=drive_link
 
-## Results
+## 実験結果
 
-| Method | Model | Framework | FPS | Status |
-|--------|-------|-----------|-----|--------|
-| method1_huggingface_segformer_b0 | SegFormer-B0 | Hugging Face Transformers | 17.69 | ✓ |
-| method2_segformer_b1 | SegFormer-B1 | Hugging Face Transformers | 3.36 | ✓ |
-| method3_torchvision_deeplabv3 | DeepLabV3 + MobileNetV3 | TorchVision | 1.90 | ✓ |
+
+|  Model | Framework | FPS | 
+|--------|-------|-----------|
+| [SegFormer-B0 ](./method1_huggingface_output.mp4) | Hugging Face Transformers  | 17.69 |
+| [SegFormer-B0](./method2_segformer_b1_output.mp4) | Hugging Face Transformers | 3.36 |
+| [DeepLabV3 + MobileNetV3](./method3_torchvision_output.mp4) |  TorchVision | 1.90 |
 
 **Fastest:** method1_huggingface_segformer_b0 (17.69 FPS)
