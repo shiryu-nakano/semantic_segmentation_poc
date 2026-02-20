@@ -1,9 +1,12 @@
 # compare_methods.py
+import sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import json
 import time
 import argparse
-from utils import process_video
+from utils.video import process_video
 
 def compare_all_methods(video_path, output_dir='outputs', display=False):
     """全手法を比較実行"""

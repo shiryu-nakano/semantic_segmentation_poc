@@ -1,10 +1,13 @@
 # method2_segformer_direct.py を修正
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
 import torch
 from transformers import SegformerForSemanticSegmentation, SegformerImageProcessor
 from PIL import Image
 import numpy as np
-from pathlib import Path
-from utils import process_video
+from utils.video import process_video
 import cv2
 import argparse
 

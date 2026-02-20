@@ -1,9 +1,12 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
 import torch
 import torchvision
 from torchvision.models.segmentation import deeplabv3_mobilenet_v3_large
 import numpy as np
-from pathlib import Path
-from utils import process_video
+from utils.video import process_video
 import cv2
 
 class TorchVisionSegmentation:

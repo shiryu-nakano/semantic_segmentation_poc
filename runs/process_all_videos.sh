@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# 使用方法:
-# ./process_all_videos.sh tsukuba2025/tsukuba2025-360
+# 使用方法 (プロジェクトルートから実行):
+# ./runs/process_all_videos.sh tsukuba2025/tsukuba2025-360
+
+# スクリプトの場所からプロジェクトルートへ移動
+cd "$(dirname "${BASH_SOURCE[0]}")/.." || exit 1
 
 if [ $# -eq 0 ]; then
     echo "Usage: $0 <video_directory>"
@@ -32,7 +35,7 @@ for video in "${VIDEOS_BASE}/${VIDEO_DIR}"/*.mp4; do
         echo "[$((count+1))] Processing: ${relative_path}"
         echo "----------------------------------------"
 
-        python method1_huggingface.py "${relative_path}"
+        python scripts/method1_huggingface.py "${relative_path}"
 
         if [ $? -eq 0 ]; then
             echo "✓ Successfully processed: ${relative_path}"

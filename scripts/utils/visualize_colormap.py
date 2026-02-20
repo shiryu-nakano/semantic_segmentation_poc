@@ -1,10 +1,14 @@
-# generate_colormap_docs.py (修正版)
+# generate_colormap_docs.py
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import argparse
-from utils import create_color_map
+from utils.colormap import create_color_map
 
 def rgb_to_hex(rgb):
-    """RGB to HEX変換（大文字）"""
-    return '#{:02X}{:02X}{:02X}'.format(rgb[0], rgb[1], rgb[2])
+    """RGB to HEX変換"""
+    return '#{:02x}{:02x}{:02x}'.format(rgb[0], rgb[1], rgb[2])
 
 def get_class_labels(lang='en'):
     """クラスラベルを言語別に取得"""
@@ -32,19 +36,18 @@ def generate_markdown_table(lang='en', output_file=None):
     # タイトルと見出しを言語別に設定
     if lang == 'ja':
         title = "## Cityscapes クラスカラー\n\n"
-        headers = "| クラス | RGB | Hex | カラー |\n"
+        headers = "| クラス | RGB | Hex | プレビュー |\n"
     else:
         title = "## Cityscapes Class Colors\n\n"
-        headers = "| Class | RGB | Hex | Color |\n"
+        headers = "| Class | RGB | Hex | Preview |\n"
     
     markdown = title + headers
     markdown += "|-------|-----|-----|----------|\n"
     
     for label, rgb in zip(labels, colors):
         hex_color = rgb_to_hex(rgb)
-        # シンプルな色表示（バッジスタイル）
-        color_badge = f'![](https://img.shields.io/badge/color-{hex_color[1:]}-{hex_color[1:]})'
-        markdown += f"| {label} | `{rgb.tolist()}` | `{hex_color}` | {color_badge} |\n"
+        preview = f'![{hex_color}](https://via.placeholder.com/50x20/{hex_color[1:]}/000000?text=+)'
+        markdown += f"| {label} | `{rgb.tolist()}` | `{hex_color}` | {preview} |\n"
     
     # ファイル出力
     if output_file is None:
@@ -66,10 +69,10 @@ def generate_html_table(lang='en', output_file=None):
     # タイトルと見出しを言語別に設定
     if lang == 'ja':
         title = "Cityscapes クラスカラー"
-        col_headers = ['クラス', 'RGB', 'Hex', 'カラー']
+        col_headers = ['クラス', 'RGB', 'Hex', 'プレビュー']
     else:
         title = "Cityscapes Class Colors"
-        col_headers = ['Class', 'RGB', 'Hex', 'Color']
+        col_headers = ['Class', 'RGB', 'Hex', 'Preview']
     
     html = f"""<!DOCTYPE html>
 <html>
@@ -78,51 +81,36 @@ def generate_html_table(lang='en', output_file=None):
     <title>{title}</title>
     <style>
         body {{
-            font-family: 'Segoe UI', Arial, sans-serif;
-            max-width: 900px;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #f5f5f5;
         }}
         h1 {{
             color: #333;
-            text-align: center;
         }}
         table {{
             width: 100%;
             border-collapse: collapse;
-            margin-top: 30px;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }}
         th, td {{
-            padding: 15px;
+            padding: 12px;
             text-align: left;
             border: 1px solid #ddd;
         }}
         th {{
-            background-color: #2c3e50;
-            color: white;
+            background-color: #f2f2f2;
             font-weight: bold;
         }}
-        tr:nth-child(even) {{
-            background-color: #f9f9f9;
-        }}
         tr:hover {{
-            background-color: #e8f4f8;
+            background-color: #f5f5f5;
         }}
         .color-box {{
-            width: 80px;
-            height: 30px;
-            border: 2px solid #333;
+            width: 50px;
+            height: 20px;
+            border: 1px solid #000;
             display: inline-block;
-            border-radius: 4px;
-        }}
-        code {{
-            background-color: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
         }}
     </style>
 </head>
@@ -143,8 +131,8 @@ def generate_html_table(lang='en', output_file=None):
     for label, rgb in zip(labels, colors):
         hex_color = rgb_to_hex(rgb)
         html += f"""            <tr>
-                <td><strong>{label}</strong></td>
-                <td><code>{rgb.tolist()}</code></td>
+                <td>{label}</td>
+                <td>{rgb.tolist()}</td>
                 <td><code>{hex_color}</code></td>
                 <td><div class="color-box" style="background-color: {hex_color};"></div></td>
             </tr>

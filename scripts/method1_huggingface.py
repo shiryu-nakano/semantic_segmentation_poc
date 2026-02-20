@@ -1,9 +1,12 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
 from transformers import SegformerImageProcessor, SegformerForSemanticSegmentation
 from PIL import Image
 import torch
 import numpy as np
-from pathlib import Path
-from utils import process_video
+from utils.video import process_video
 import argparse
 
 class HuggingFaceSegmentation:

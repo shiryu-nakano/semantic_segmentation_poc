@@ -1,7 +1,10 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
 from mmseg.apis import init_model, inference_model, show_result_pyplot
 import numpy as np
-from pathlib import Path
-from utils import process_video
+from utils.video import process_video
 import cv2
 
 class MMSegmentation:

@@ -15,6 +15,9 @@ pip install -r requirements.txt
 - Method 2: MMSegmentation
 - Method 3: NVIDIA TAO
 
+
+
+
 ## Cityscapes Class Colors
 
 | Class | Color (RGB) | Preview |
