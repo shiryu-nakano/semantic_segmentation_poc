@@ -44,3 +44,19 @@ pip install -r requirements.txt
 
 ## Video Source
 https://www.pexels.com/search/videos/driving/
+
+
+## How to Run 
+```
+# SegFormer (デフォルト B0)
+python scripts/segformer.py tsukuba2025/tsukuba2025-360/clip.mp4
+
+# SegFormer B1 を使いたい場合
+python scripts/segformer.py tsukuba2025/tsukuba2025-360/clip.mp4 -m b1
+
+# DeepLabV3
+python scripts/deeplabv3.py tsukuba2025/tsukuba2025-360/clip.mp4
+
+# バッチ処理（デフォルトで segformer B0）
+./runs/process_all_videos.sh tsukuba2025/tsukuba2025-360
+```

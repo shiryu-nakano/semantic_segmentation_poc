@@ -35,7 +35,7 @@ for video in "${VIDEOS_BASE}/${VIDEO_DIR}"/*.mp4; do
         echo "[$((count+1))] Processing: ${relative_path}"
         echo "----------------------------------------"
 
-        python scripts/method1_huggingface.py "${relative_path}"
+        python scripts/segformer.py "${relative_path}"
 
         if [ $? -eq 0 ]; then
             echo "✓ Successfully processed: ${relative_path}"
